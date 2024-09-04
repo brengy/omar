@@ -1,11 +1,13 @@
-body {
-  margin: 0;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+    margin: 0;
+    overflow: hidden; /* Ù…Ù†Ø¹ Ø§Ù„ØªÙ…Ø±ÙŠØ± */
 }
 
 canvas {
-  display: block;
-  background: #000; /* ÎáİíÉ ÏÇßäÉ ááÚÈÉ */
-  border: 1px solid #fff; /* ÍÏ ÃÈíÖ Íæá ÇáÚäÕÑ canvas */
+    border: 30px solid #fff;
 }
