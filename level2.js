@@ -62,7 +62,7 @@ const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
 // ÊÚÏíá ÓÑÚÉ ÇáÍÑßÉ ÇáÊáÞÇÆíÉ ááÔÎÕíÉ ÈäÇÁð Úáì äæÚ ÇáÌåÇÒ
 if (isMobile) {
-  player.speed = 4; // íãßäß ÖÈØ ÇáÓÑÚÉ ÍÓÈ ÇáÍÇÌÉ
+  player.speed =3; // íãßäß ÖÈØ ÇáÓÑÚÉ ÍÓÈ ÇáÍÇÌÉ
 }
 
 
