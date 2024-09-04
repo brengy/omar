@@ -29,7 +29,7 @@ const camera = {
 
 const player = {
   x: 50,
-  y: 0, // ”Ì „  ⁄ÌÌ‰ Â–Â «·ﬁÌ„… ·«Õﬁ« · ﬂÊ‰ ›Êﬁ «··ÊÕ «·√Ê·
+  y: 0, // √ì√≠√ä√£ √ä√ö√≠√≠√§ √•√ê√• √á√°√û√≠√£√â √°√á√ç√û√∞√á √°√ä√ü√¶√§ √ù√¶√û √á√°√°√¶√ç √á√°√É√¶√°
   width: 130,
   height: 160,
   velocityX: 0,
@@ -42,12 +42,12 @@ const player = {
   explosionCounter: 0,
 };
 
-// «· Õﬁﬁ ≈–« ﬂ«‰ «·ÃÂ«“ „Õ„Ê·«
+// √á√°√ä√ç√û√û √Ö√ê√á √ü√á√§ √á√°√å√•√á√í √£√ç√£√¶√°√∞√á
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
-//  ⁄œÌ· ”—⁄… «·Õ—ﬂ… «· ·ﬁ«∆Ì… ··‘Œ’Ì… »‰«¡ ⁄·Ï ‰Ê⁄ «·ÃÂ«“
+// √ä√ö√è√≠√° √ì√ë√ö√â √á√°√ç√ë√ü√â √á√°√ä√°√û√á√Ü√≠√â √°√°√î√é√ï√≠√â √à√§√á√Å√∞ √ö√°√¨ √§√¶√ö √á√°√å√•√á√í
 if (isMobile) {
-  player.speed = 2; // Ì„ﬂ‰ﬂ ÷»ÿ «·”—⁄… Õ”» «·Õ«Ã…
+  player.speed = 4; // √≠√£√ü√§√ü √ñ√à√ò √á√°√ì√ë√ö√â √ç√ì√à √á√°√ç√á√å√â
 }
 
 class Platform {
@@ -107,20 +107,20 @@ function generatePlatforms() {
   if (platforms.length === 0 || platforms[platforms.length - 1].x - camera.x < canvas.width - 200) {
     const platformWidth = 200;
     const platformHeight = 20;
-    const minGap = 180; //  ﬁ·Ì· «·›ÃÊ… «·œ‰Ì« · ”ÂÌ· «·ﬁ›“
-    const maxGap = 220; //  ﬁ·Ì· «·›ÃÊ… «·ﬁ’ÊÏ · ”ÂÌ· «·ﬁ›“
+    const minGap = 180; // √ä√û√°√≠√° √á√°√ù√å√¶√â √á√°√è√§√≠√á √°√ä√ì√•√≠√° √á√°√û√ù√í
+    const maxGap = 220; // √ä√û√°√≠√° √á√°√ù√å√¶√â √á√°√û√ï√¶√¨ √°√ä√ì√•√≠√° √á√°√û√ù√í
     const randomGap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
     const xPos = platforms.length === 0 ? 100 : platforms[platforms.length - 1].x + platformWidth + randomGap;
     const minHeight = canvas.height / 2;
     const maxHeight = canvas.height - 150;
     let yPos = platforms.length === 0 ? minHeight : platforms[platforms.length - 1].y + Math.random() * (maxHeight - minHeight) - 50;
 
-    yPos = Math.max(minHeight, Math.min(yPos, maxHeight)); // ÷„«‰ √‰  ﬂÊ‰ «·√·Ê«Õ ÷„‰ «·ÕœÊœ «·„ﬁ»Ê·…
+    yPos = Math.max(minHeight, Math.min(yPos, maxHeight)); // √ñ√£√á√§ √É√§ √ä√ü√¶√§ √á√°√É√°√¶√á√ç √ñ√£√§ √á√°√ç√è√¶√è √á√°√£√û√à√¶√°√â
 
     const platform = new Platform(xPos, yPos, platformWidth, platformHeight, getRandomColor());
     platforms.push(platform);
 
-    // ≈⁄œ«œ «··«⁄» ·Ì»œ√ ›Êﬁ «··ÊÕ «·√Ê·
+    // √Ö√ö√è√á√è √á√°√°√á√ö√à √°√≠√à√è√É √ù√¶√û √á√°√°√¶√ç √á√°√É√¶√°
     if (platforms.length === 1) {
       player.x = platform.x + platform.width / 2 - player.width / 2;
       player.y = platform.y - player.height;
@@ -133,7 +133,7 @@ function generatePlatforms() {
 function generateCoins() {
   platforms.forEach(platform => {
     if (!platform.coinsGenerated) {
-      const numberOfCoins = Math.floor(Math.random() * 3) + 1; //  ﬁ·Ì· ⁄œœ «·⁄„·« 
+      const numberOfCoins = Math.floor(Math.random() * 3) + 1; // √ä√û√°√≠√° √ö√è√è √á√°√ö√£√°√á√ä
       const coinSpacing = platform.width / (numberOfCoins + 1);
       for (let i = 0; i < numberOfCoins; i++) {
         const coinX = platform.x + coinSpacing * (i + 1);
@@ -147,10 +147,10 @@ function generateCoins() {
 
 function handlePlayerMovement() {
   if (isMobile) {
-    // «·Õ—ﬂ… «· ·ﬁ«∆Ì… „‰ «·Ì”«— ≈·Ï «·Ì„Ì‰
+    // √á√°√ç√ë√ü√â √á√°√ä√°√û√á√Ü√≠√â √£√§ √á√°√≠√ì√á√ë √Ö√°√¨ √á√°√≠√£√≠√§
     player.x += player.speed;
   } else {
-    // «·Õ—ﬂ… »«” Œœ«„ «·√“—«— ⁄·Ï «·√ÃÂ“… €Ì— «·„Õ„Ê·…
+    // √á√°√ç√ë√ü√â √à√á√ì√ä√é√è√á√£ √á√°√É√í√ë√á√ë √ö√°√¨ √á√°√É√å√•√í√â √õ√≠√ë √á√°√£√ç√£√¶√°√â
     if (keys['ArrowLeft'] || keys['KeyA']) player.x -= player.speed;
     if (keys['ArrowRight'] || keys['KeyD']) player.x += player.speed;
   }
@@ -173,7 +173,7 @@ function handlePlayerVerticalMovement() {
       onPlatform = true;
       player.y = platform.y - player.height;
       player.velocityY = 0;
-      player.isJumping = false; // «·”„«Õ »«·ﬁ›“ „—… √Œ—Ï ⁄‰œ ·„” «·„‰’…
+      player.isJumping = false; // √á√°√ì√£√á√ç √à√á√°√û√ù√í √£√ë√â √É√é√ë√¨ √ö√§√è √°√£√ì √á√°√£√§√ï√â
     }
   });
   if ((keys['Space'] || keys['ArrowUp'] || keys['KeyW']) && !player.isJumping) {
@@ -192,8 +192,8 @@ function update() {
     detectCollisions();
     render();
   if (player.score >= 50) {
-      window.location.href = 'level2.html'; // «·«‰ ﬁ«· ≈·Ï «·„” ÊÏ 2
-      return; // ≈Ìﬁ«› «· ÕœÌÀ ·„‰⁄ «·„“Ìœ „‰ «·⁄„·Ì« 
+      window.location.href = 'level2.html'; // √á√°√á√§√ä√û√á√° √Ö√°√¨ √á√°√£√ì√ä√¶√¨ 2
+      return; // √Ö√≠√û√á√ù √á√°√ä√ç√è√≠√ã √°√£√§√ö √á√°√£√í√≠√è √£√§ √á√°√ö√£√°√≠√á√ä
     }
 
  
@@ -254,21 +254,21 @@ function drawCharacter() {
 }
 
 function drawUI() {
-  // ⁄—÷ «·„” ÿÌ·
+  // √ö√ë√ñ √á√°√£√ì√ä√ò√≠√°
   const boxWidth = 150;
-  // „Êﬁ⁄ «·„” ÿÌ· «·√›ﬁÌ („‰ ’› «·ﬂ«‰›”)
+  // √£√¶√û√ö √á√°√£√ì√ä√ò√≠√° √á√°√É√ù√û√≠ (√£√§√ä√ï√ù √á√°√ü√á√§√ù√ì)
   const boxX = (canvas.width - boxWidth) / 2;
 
-  // «·„Êﬁ⁄ «·—√”Ì ··„” ÿÌ· «·√Ê· »ÕÌÀ ÌﬂÊ‰  Õ  »„ﬁœ«— 20 »ﬂ”· „‰ «·ﬂ«‰›”
-  const boxY = canvas.height - 20 - 70; // 70 ÂÊ «·«— ›«⁄ «·ﬂ·Ì ··„” ÿÌ·Ì‰ Ê«·„”«›… »Ì‰Â„«
+  // √á√°√£√¶√û√ö √á√°√ë√É√ì√≠ √°√°√£√ì√ä√ò√≠√° √á√°√É√¶√° √à√ç√≠√ã √≠√ü√¶√§ √ä√ç√ä √à√£√û√è√á√ë 20 √à√ü√ì√° √£√§ √á√°√ü√á√§√ù√ì
+  const boxY = canvas.height - 20 - 70; // 70 √•√¶ √á√°√á√ë√ä√ù√á√ö √á√°√ü√°√≠ √°√°√£√ì√ä√ò√≠√°√≠√§ √¶√á√°√£√ì√á√ù√â √à√≠√§√•√£√á
 
-  // —”„ «·„” ÿÌ· «·√Ê· (Score)
+  // √ë√ì√£ √á√°√£√ì√ä√ò√≠√° √á√°√É√¶√° (Score)
   drawRoundedRect(boxX, boxY, boxWidth, 35, 5, 'white', 'black', 3);
   ctx.fillStyle = 'black';
   ctx.font = '20px Arial';
   ctx.fillText(`Score: ${player.score}`, boxX + (boxWidth - ctx.measureText(`Score: ${player.score}`).width) / 2, boxY + 25);
 
-  // —”„ «·„” ÿÌ· «·À«‰Ì (High Score) √”›· «·„” ÿÌ· «·√Ê·
+  // √ë√ì√£ √á√°√£√ì√ä√ò√≠√° √á√°√ã√á√§√≠ (High Score) √É√ì√ù√° √á√°√£√ì√ä√ò√≠√° √á√°√É√¶√°
   drawRoundedRect(boxX, boxY + 40, boxWidth, 35, 5, 'white', 'black', 3);
   ctx.fillText(`High Score: ${highScore}`, boxX + (boxWidth - ctx.measureText(`High Score: ${highScore}`).width) / 2, boxY + 65);
 }
@@ -339,7 +339,7 @@ function getRandomColor() {
   return color;
 }
 
-// ≈⁄œ«œ «· Õﬂ„ »«··„” ··„Ê»«Ì·
+// √Ö√ö√è√á√è √á√°√ä√ç√ü√£ √à√á√°√°√£√ì √°√°√£√¶√à√á√≠√°
 let isTouching = false;
 let touchStartX = 0;
 let touchStartY = 0;
@@ -353,7 +353,7 @@ canvas.addEventListener('touchstart', (event) => {
     touchCurrentX = touchStartX;
     touchCurrentY = touchStartY;
 
-    // „‰⁄ «· „—Ì— «·«› —«÷Ì
+    // √£√§√ö √á√°√ä√£√ë√≠√ë √á√°√á√ù√ä√ë√á√ñ√≠
     event.preventDefault();
 });
 
@@ -380,7 +380,7 @@ canvas.addEventListener('touchmove', (event) => {
             player.isJumping = true;
         }
 
-        // „‰⁄ «· „—Ì— «·«› —«÷Ì
+        // √£√§√ö √á√°√ä√£√ë√≠√ë √á√°√á√ù√ä√ë√á√ñ√≠
         event.preventDefault();
     }
 });
@@ -396,7 +396,7 @@ canvas.addEventListener('touchend', (event) => {
         }
     }, 50);
 
-    // „‰⁄ «· „—Ì— «·«› —«÷Ì
+    // √£√§√ö √á√°√ä√£√ë√≠√ë √á√°√á√ù√ä√ë√á√ñ√≠
     event.preventDefault();
 });
 
