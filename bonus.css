@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+    margin: 0;
+    overflow: hidden; /* „‰⁄ «· „—Ì— */
+backgroundImage.src = 'bbbh6.jpg';
+}
+
+canvas {
+    border: 30px solid #fff;
+backgroundImage.src = 'bbbh6.jpg';
+}
